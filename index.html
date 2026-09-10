@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Live submission deadline tracker for major A/A* machine learning and learning-theory venues." />
+  <meta name="description" content="Live submission deadline tracker for major A/A* and selected B machine learning and learning-theory venues." />
   <title>ML Theory Deadline Tracker</title>
   <style>
     :root {
@@ -91,6 +91,7 @@
     .badge { font-size: 11px; font-weight: 900; padding: 5px 8px; border-radius: 999px; }
     .rank-star { color: var(--star); background: var(--star-soft); }
     .rank-a { color: var(--accent); background: var(--accent-soft); }
+    .rank-b { color: #42556f; background: #edf1f6; }
     .fit { color: var(--muted); background: #eef1f0; }
 
     .deadline-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; font-weight: 850; }
@@ -128,9 +129,9 @@
 </head>
 <body>
   <header class="wrap">
-    <div class="eyebrow">ML / Learning Theory · A & A* venues</div>
+    <div class="eyebrow">ML / Learning Theory · A*, A + separate B view</div>
     <h1>Paper Deadline Tracker</h1>
-    <p class="intro">Live countdowns for major A/A* venues suitable for machine-learning and learning-theory papers. Announced full-paper deadlines are automatically sorted from nearest to farthest. Times update every second.</p>
+    <p class="intro">Live countdowns for major A/A* venues suitable for machine-learning and learning-theory papers, with a separate B-venue view. Announced full-paper deadlines are automatically sorted from nearest to farthest. Times update every second.</p>
 
     <div class="topbar">
       <div class="next-card">
@@ -154,6 +155,7 @@
         <button data-filter="upcoming">Upcoming</button>
         <button data-filter="A*">A*</button>
         <button data-filter="A">A</button>
+        <button data-filter="B">B</button>
       </div>
       <div class="live"><span class="pulse"></span>Live countdown · deadline timezone preserved</div>
     </div>
@@ -164,7 +166,7 @@
   <footer>
     <div class="wrap foot-grid">
       <div>
-        <strong>Ranking scope.</strong> Rank labels use ICORE 2026. This tracker intentionally focuses on major A/A* venues that are realistic homes for ML or learning-theory work, rather than unrelated A/A* venues in computer vision, NLP, systems, etc.
+        <strong>Ranking scope.</strong> Rank labels use ICORE 2026. The default view focuses on major A/A* venues that are realistic homes for ML or learning-theory work. B-ranked ML/theory venues are intentionally kept separate and appear only when you click the B filter.
       </div>
       <div>
         <strong>Deadline accuracy.</strong> “TBD” means the next exact submission date was not posted on the official venue page when this file was checked. AoE means Anywhere on Earth (UTC−12). Always click the official page before submitting.
@@ -180,6 +182,7 @@ const venues = [
     rank: "A*", fit: "ML / theory",
     abstractDeadline: "2026-09-18T23:59:00-12:00",
     paperDeadline: "2026-09-25T23:59:00-12:00",
+    timeZone: "Etc/GMT+12", timezoneLabel: "AoE",
     official: "https://iclr.cc/Conferences/2027/Dates",
     rankSource: "https://portal.core.edu.au/conf-ranks/2273/",
     note: "Both deadlines are Anywhere on Earth (UTC−12)."
@@ -190,6 +193,7 @@ const venues = [
     rank: "A", fit: "ML / theory",
     abstractDeadline: "2026-09-29T23:59:00-12:00",
     paperDeadline: "2026-10-06T23:59:00-12:00",
+    timeZone: "Etc/GMT+12", timezoneLabel: "AoE",
     official: "https://virtual.aistats.org/Conferences/2027/SubmissionFAQ",
     rankSource: "https://portal.core.edu.au/conf-ranks/913/",
     note: "Abstract submission is required; all deadlines are AoE."
@@ -264,12 +268,77 @@ const venues = [
     rankSource: "https://portal.core.edu.au/conf-ranks/491/",
     note: "2027 conference page is live, but research-track submission dates are not yet posted."
   },
+
+  {
+    name: "ALT 2027",
+    longName: "International Conference on Algorithmic Learning Theory",
+    rank: "B", fit: "Theory-first",
+    abstractDeadline: null,
+    paperDeadline: "2026-10-12T23:59:00-12:00",
+    timeZone: "Etc/GMT+12", timezoneLabel: "AoE",
+    official: "https://algorithmiclearningtheory.org/alt2027/submission-instructions/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=ALT",
+    note: "Excellent fit for theoretical and algorithmic ML. Paper deadline is Oct 12, 2026, 11:59 p.m. AoE; no separate abstract deadline is listed."
+  },
+  {
+    name: "ESANN 2027",
+    longName: "European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning",
+    rank: "B", fit: "ML",
+    abstractDeadline: null,
+    paperDeadline: "2026-11-18T23:59:00+01:00",
+    timeZone: "Europe/Brussels", timezoneLabel: "CET*",
+    official: "https://www.esann.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=ESANN",
+    note: "Official site lists Nov 18, 2026 as the submission date but does not currently state a submission time; countdown uses 23:59 Brussels time (*) for ordering."
+  },
+  {
+    name: "IJCNN 2027",
+    longName: "IEEE International Joint Conference on Neural Networks",
+    rank: "B", fit: "ML / neural nets",
+    abstractDeadline: null,
+    paperDeadline: "2027-01-31T23:59:00+02:00",
+    timeZone: "Africa/Johannesburg", timezoneLabel: "SAST*",
+    official: "https://ijcnn.org/2027/authors/call-for-papers",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=IJCNN",
+    note: "Official call lists Jan 31, 2027 for regular papers but does not currently state a submission time; countdown uses 23:59 Cape Town time (*) for ordering."
+  },
+  {
+    name: "PAKDD 2027",
+    longName: "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
+    rank: "B", fit: "Data mining / ML",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://pakdd.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/1667/",
+    note: "ICORE 2026 rank B. The next exact research-paper deadline is kept TBD until it is confirmed on the official conference page."
+  },
+  {
+    name: "Discovery Science 2027",
+    longName: "International Conference on Discovery Science",
+    rank: "B", fit: "ML / discovery",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://ds2026.github.io/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=Discovery%20Science",
+    note: "ICORE 2026 rank B. 2027 submission deadline is TBD until an official 2027 call is available."
+  },
+  {
+    name: "ICONIP 2027",
+    longName: "International Conference on Neural Information Processing",
+    rank: "B", fit: "ML / neural computation",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://www.apnns.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=ICONIP",
+    note: "ICORE 2026 rank B. 2027 paper deadline is TBD until an official call is posted."
+  },
   {
     name: "AAAI-27",
     longName: "AAAI Conference on Artificial Intelligence · Main Technical Track",
     rank: "A*", fit: "Broader AI / ML",
     abstractDeadline: "2026-07-21T23:59:00-12:00",
     paperDeadline: "2026-07-28T23:59:00-12:00",
+    timeZone: "Etc/GMT+12", timezoneLabel: "AoE",
     official: "https://aaai.org/conference/aaai/aaai-27/submission-instructions/",
     rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=AAAI",
     note: "AAAI-27 main-track submission has passed; the next main-track deadline is not yet announced."
@@ -280,13 +349,16 @@ let activeFilter = "all";
 
 function parseDate(value) { return value ? new Date(value) : null; }
 
-function formatDate(value) {
+function formatDate(value, venue) {
   if (!value) return "TBD";
   const d = parseDate(value);
-  return new Intl.DateTimeFormat("en-US", {
+  const zone = venue.timeZone || "Etc/GMT+12";
+  const label = venue.timezoneLabel || "AoE";
+  const text = new Intl.DateTimeFormat("en-US", {
     year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
-    timeZone: "Etc/GMT+12", timeZoneName: "short"
-  }).format(d).replace("GMT-12", "AoE");
+    timeZone: zone
+  }).format(d);
+  return `${text} ${label}`;
 }
 
 function countdown(value, now = new Date()) {
@@ -325,17 +397,19 @@ function sortVenues(now) {
 
 function allowed(v, now) {
   const state = countdown(v.paperDeadline, now).state;
-  if (activeFilter === "all") return true;
-  if (activeFilter === "upcoming") return state === "upcoming";
+  // Keep B venues separate: they appear only when the B button is selected.
+  if (activeFilter === "B") return v.rank === "B";
+  if (activeFilter === "all") return v.rank === "A" || v.rank === "A*";
+  if (activeFilter === "upcoming") return (v.rank === "A" || v.rank === "A*") && state === "upcoming";
   return v.rank === activeFilter;
 }
 
-function deadlineBlock(label, value, now) {
+function deadlineBlock(label, value, now, venue) {
   const c = countdown(value, now);
   return `
     <div>
       <div class="deadline-label">${label}</div>
-      <div class="deadline-date ${c.state === 'tbd' ? 'tbd' : ''}">${formatDate(value)}</div>
+      <div class="deadline-date ${c.state === 'tbd' ? 'tbd' : ''}">${formatDate(value, venue)}</div>
       <div class="countdown ${c.state}">${c.text}</div>
     </div>`;
 }
@@ -353,14 +427,14 @@ function render() {
         <div>
           <div class="name-row">
             <div class="venue-name">${v.name}</div>
-            <span class="badge ${v.rank === 'A*' ? 'rank-star' : 'rank-a'}">${v.rank}</span>
+            <span class="badge ${v.rank === 'A*' ? 'rank-star' : (v.rank === 'B' ? 'rank-b' : 'rank-a')}">${v.rank}</span>
             <span class="badge fit">${v.fit}</span>
           </div>
           <div class="full-name">${v.longName}</div>
           <div class="note">${v.note}</div>
         </div>
-        ${deadlineBlock("Abstract deadline", v.abstractDeadline, now)}
-        ${deadlineBlock("Full-paper deadline", v.paperDeadline, now)}
+        ${deadlineBlock("Abstract deadline", v.abstractDeadline, now, v)}
+        ${deadlineBlock("Full-paper deadline", v.paperDeadline, now, v)}
         <div class="links">
           <a class="link" href="${v.official}" target="_blank" rel="noopener">Official page ↗</a>
           <a class="link" href="${v.rankSource}" target="_blank" rel="noopener">ICORE rank ↗</a>
@@ -368,7 +442,14 @@ function render() {
       </article>`;
   }).join("") || `<div class="venue"><div>No venues match this filter.</div></div>`;
 
-  const next = sorted.find(v => countdown(v.paperDeadline, now).state === "upcoming");
+  const nextPool = activeFilter === "B"
+    ? sorted.filter(v => v.rank === "B")
+    : activeFilter === "A*"
+      ? sorted.filter(v => v.rank === "A*")
+      : activeFilter === "A"
+        ? sorted.filter(v => v.rank === "A")
+        : sorted.filter(v => v.rank === "A" || v.rank === "A*");
+  const next = nextPool.find(v => countdown(v.paperDeadline, now).state === "upcoming");
   document.getElementById("nextName").textContent = next ? next.name : "No announced upcoming deadline";
   document.getElementById("nextCountdown").textContent = next ? countdown(next.paperDeadline, now).text : "—";
 }
