@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Live submission deadline tracker for major A/A* and selected B machine learning and learning-theory venues." />
+  <meta name="description" content="Live submission deadline tracker for major A/A* machine learning, learning-theory, and theory-CS venues, with a separate B view." />
   <title>ML Theory Deadline Tracker</title>
   <style>
     :root {
@@ -129,9 +129,9 @@
 </head>
 <body>
   <header class="wrap">
-    <div class="eyebrow">ML / Learning Theory · A*, A + separate B view</div>
+    <div class="eyebrow">ML / Learning Theory / TCS · A*, A + separate B view</div>
     <h1>Paper Deadline Tracker</h1>
-    <p class="intro">Live countdowns for major A/A* venues suitable for machine-learning and learning-theory papers, with a separate B-venue view. Announced full-paper deadlines are automatically sorted from nearest to farthest. Times update every second.</p>
+    <p class="intro">Live countdowns for major A/A* venues suitable for machine-learning, learning-theory, and closely related theory papers, with a separate B-venue view. Announced full-paper deadlines are automatically sorted from nearest to farthest. Times update every second.</p>
 
     <div class="topbar">
       <div class="next-card">
@@ -166,7 +166,7 @@
   <footer>
     <div class="wrap foot-grid">
       <div>
-        <strong>Ranking scope.</strong> Rank labels use ICORE 2026. The default view focuses on major A/A* venues that are realistic homes for ML or learning-theory work. B-ranked ML/theory venues are intentionally kept separate and appear only when you click the B filter.
+        <strong>Ranking scope.</strong> Rank labels use ICORE 2026. The default view focuses on major A/A* venues that are realistic homes for ML, learning-theory, or closely related theory work. B-ranked ML/theory venues are intentionally kept separate and appear only when you click the B filter.
       </div>
       <div>
         <strong>Deadline accuracy.</strong> “TBD” means the next exact submission date was not posted on the official venue page when this file was checked. AoE means Anywhere on Earth (UTC−12). Always click the official page before submitting.
@@ -332,6 +332,91 @@ const venues = [
     rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=ICONIP",
     note: "ICORE 2026 rank B. 2027 paper deadline is TBD until an official call is posted."
   },
+
+  {
+    name: "STACS 2027",
+    longName: "International Symposium on Theoretical Aspects of Computer Science",
+    rank: "A", fit: "Theory / algorithms",
+    abstractDeadline: null,
+    paperDeadline: "2026-10-11T23:59:00-12:00",
+    timeZone: "Etc/GMT+12", timezoneLabel: "AoE",
+    official: "https://stacs2027.uni-goettingen.de/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=STACS",
+    note: "Track A covers algorithms, data structures, and complexity. Full-paper deadline: Oct 11, 2026, 23:59 AoE."
+  },
+  {
+    name: "FOCS 2027",
+    longName: "IEEE Symposium on Foundations of Computer Science",
+    rank: "A*", fit: "Theory-first",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://focs.computer.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=FOCS",
+    note: "Flagship theory venue; FOCS explicitly includes computational learning theory and foundations of machine learning. The 2027 submission deadline is not yet posted."
+  },
+  {
+    name: "STOC 2027",
+    longName: "ACM Symposium on Theory of Computing",
+    rank: "A*", fit: "Theory-first",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://acm-stoc.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=STOC",
+    note: "Flagship theory venue covering computational learning theory, optimization, privacy, economics and computation, and related foundations. 2027 deadline is TBD."
+  },
+  {
+    name: "SODA 2027",
+    longName: "ACM-SIAM Symposium on Discrete Algorithms",
+    rank: "A*", fit: "Algorithms / ML theory",
+    abstractDeadline: null,
+    paperDeadline: "2026-07-09T23:59:00-12:00",
+    timeZone: "Etc/GMT+12", timezoneLabel: "AoE",
+    official: "https://www.siam.org/conferences-events/siam-conferences/soda27/submissions/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/80/",
+    note: "Major algorithms venue that can fit theoretical ML/AI work with strong algorithmic content. The SODA 2027 submission deadline has passed."
+  },
+  {
+    name: "ITCS 2027",
+    longName: "Innovations in Theoretical Computer Science",
+    rank: "A", fit: "Theory-first",
+    abstractDeadline: "2026-09-02T16:59:00-07:00",
+    paperDeadline: "2026-09-04T16:59:00-07:00",
+    timeZone: "America/Los_Angeles", timezoneLabel: "PDT",
+    official: "https://itcs-conf.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/2176/",
+    note: "Broad theory venue for innovative conceptual or methodological work. The 2027 abstract and paper deadlines have passed."
+  },
+  {
+    name: "ICALP 2027 · Track A",
+    longName: "International Colloquium on Automata, Languages, and Programming",
+    rank: "A*", fit: "Theory / algorithms",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://eatcs.org/index.php/future-icalps",
+    rankSource: "https://portal.core.edu.au/conf-ranks/?by=all&search=ICALP",
+    note: "For ML-theory work, Track A is the more relevant algorithms/complexity track. Its 2027 deadline is planned for February 2027 but the exact date is still TBD."
+  },
+  {
+    name: "EC 2027",
+    longName: "ACM Conference on Economics and Computation",
+    rank: "A*", fit: "Game theory / online learning",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://sigecom.org/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/14/",
+    note: "Strong fit for online learning, algorithmic game theory, mechanism design, fairness, markets, and learning in strategic settings. EC 2027 dates/deadlines are not yet announced."
+  },
+  {
+    name: "APPROX/RANDOM 2027",
+    longName: "Approximation Algorithms / Randomization and Computation",
+    rank: "A", fit: "Randomized algorithms / theory",
+    abstractDeadline: null,
+    paperDeadline: null,
+    official: "https://approxconference.com/",
+    rankSource: "https://portal.core.edu.au/conf-ranks/1451/",
+    note: "Relevant for randomized algorithms, approximation, online/streaming algorithms, pseudorandomness, and related learning-theory techniques. The 2027 deadline is TBD."
+  },
+
   {
     name: "AAAI-27",
     longName: "AAAI Conference on Artificial Intelligence · Main Technical Track",
